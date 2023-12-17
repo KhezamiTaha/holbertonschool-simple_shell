@@ -6,18 +6,18 @@
  *
  * Return: Always 0.
  */
-int main(void)
+int main(int argc, char *argv[])
 {
-	char *lineptr = "/bin/ls";
+	char *lineptr = argv[1];
 	int i = 0, pid, statuus;
-	char *argv[] = {"/usr/local/bin/betty", NULL};
+	char *args[] = {"/usr/local/bin/betty", lineptr, NULL};
 	char *env[] = {NULL};
 
 	while (i < 1)
 	{
 		pid = fork();
 		if (pid == 0)
-			execve("/usr/local/bin/betty", argv, env);
+			execve("/usr/local/bin/betty", args, env);
 		else
 		{
 			wait(&statuus);
