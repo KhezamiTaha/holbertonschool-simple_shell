@@ -8,16 +8,22 @@
  */
 int main(int argc, char *argv[])
 {
-	char *lineptr = argv[1];
+
 	int i = 0, pid, statuus;
-	char *args[] = {"/usr/local/bin/betty", lineptr, NULL};
+	char *args[3];
 	char *env[] = {NULL};
+	(void)(argc);
 
 	while (i < 1)
 	{
 		pid = fork();
 		if (pid == 0)
+		{
+			args[0] = "/usr/local/bin/betty";
+			args[1] = argv[1];
+			args[2] = NULL;
 			execve("/usr/local/bin/betty", args, env);
+		}
 		else
 		{
 			wait(&statuus);
