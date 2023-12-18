@@ -1,8 +1,11 @@
 #include "sh.h"
 
-void print_env(char *env[]) {
-    while (*env != NULL) {
-        printf("%s\n", *env);
-        env++;
-    }
+void print_env(void)
+{
+	int index;
+
+	for (index = 0; environ[index]; index++)
+	{
+		printf("%s\n", environ[index]);
+	}
 }
