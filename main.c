@@ -2,35 +2,29 @@
 
 int main(void)
 {
-    char *lineptr;
-    while (1)
-    {
-        printf("$ ");
-        fflush(stdout);
+	char *lineptr;
+	while (1)
+	{
+		printf("$ ");
+		fflush(stdout);
 
-        lineptr = my_getline();
+		lineptr = my_getline();
 
-        if (strcmp(lineptr, "env") == 0)
-        {
-            print_env();
-        }
-        else
-        {
-            execute(lineptr, environ);
-        }
+		if (strcmp(lineptr, "env") == 0)
+		{
+			print_env();
+		}
+		else if (strcmp(lineptr, "exit") == 0)
+		{
+			exit_shell();
+		}
+		else
+		{
+			execute(lineptr, environ);
+		}
 
-        if (strcmp(lineptr, "exit") == 0)
-        {
-            exit_shell();
-        }
-        else
-        {
+		free(lineptr);
+	}
 
-            execute(lineptr, environ);
-        }
-
-        free(lineptr);
-    }
-
-    return (0);
+	return (0);
 }
