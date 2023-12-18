@@ -16,8 +16,8 @@ int main(void)
 	char *env[] = {NULL};
 	while (1)
 	{
-	printf("Simple Shell# ");
-	fflush(stdout);
+	printf("($)");
+
 	pid = fork();
 	if (pid == 0)
 	{
