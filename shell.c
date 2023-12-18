@@ -1,3 +1,12 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <string.h>
+/**
+ * main - execve example
+ *
+ * Return: Always 0.
+ */
 int shell(void)
 {
 	int pid, status;
