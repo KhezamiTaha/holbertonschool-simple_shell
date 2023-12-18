@@ -1,5 +1,10 @@
 #include "sh.h"
-
+/**
+ * my_getline - Reads a line of input from the standard input.
+ *
+ * Return: A dynamically allocated string containing the entered line.
+ *         Exits the program with an error message if getline fails.
+ */
 char *my_getline(void) {
     char *line = NULL;
     size_t len = 0;

@@ -1,5 +1,12 @@
 #include "sh.h"
-
+/**
+ * execute - Executes a command using fork and execve.
+ * @command: The command string to be executed.
+ * @env: The environment variable array.
+ *
+ * Return: No return value.
+ *         Prints error messages if fork or execve fails.
+ */
 void execute(char *command, char *env[])
 {
 	pid_t child_pid;

@@ -1,5 +1,10 @@
 #include "sh.h"
-
+/**
+ * main - The main function of the simple shell.
+ *
+ * Return: Always returns 0.
+ *         Exits the program when the user enters "exit".
+ */
 int main(void)
 {
 	char *lineptr;
