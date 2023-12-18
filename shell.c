@@ -1,23 +1,13 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <sys/wait.h>
-#include <string.h>
-/**
- * main - execve example
- *
- * Return: Always 0.
- */
-int main(void)
+int shell(void)
 {
 	int pid, status;
 	char *lineptr = NULL;
 	size_t n;
 	char *argv[2];
 	char *env[] = {NULL};
-	while (1)
-	{
-	printf("($)");
 
+	printf("Simple Shell# ");
+	fflush(stdout);
 	pid = fork();
 	if (pid == 0)
 	{
@@ -31,7 +21,6 @@ int main(void)
 	{
 		wait(&status);
 	}
-	}
-	
+
 	return (0);
 }
