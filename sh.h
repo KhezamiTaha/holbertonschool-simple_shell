@@ -17,5 +17,6 @@ char *my_getline(void);
 void execute(char *command, char *env[]);
 void print_env(void);
 void exit_shell(void);
+char *find_path(char *command);
 
 #endif

@@ -12,7 +12,6 @@ int main(void)
 	{
 		printf("$ ");
 		fflush(stdout);
-
 		lineptr = my_getline();
 
 		if (strcmp(lineptr, "env") == 0)

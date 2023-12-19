@@ -11,10 +11,12 @@ void execute(char *command, char *env[])
 {
 	pid_t child_pid;
 	int status;
-	char *token;
+	char *token, *full_path;
 	char *args[32];
+	char *_env[] = {NULL};
 	int i = 0;
 	int j;
+	struct stat st;
 
 	child_pid = fork();
 	if (child_pid == -1)
@@ -24,7 +26,6 @@ void execute(char *command, char *env[])
 	}
 	if (child_pid == 0)
 	{
-
 		token = strtok(command, " ");
 		while (token)
 		{
@@ -33,14 +34,16 @@ void execute(char *command, char *env[])
 		}
 		args[i] = NULL;
 
-		for (j = 0; args[j] != NULL; j++)
+		if (stat(args[0], &st) == 0)
 		{
+			execve(args[0], args, _env);
 		}
-
-		execvp(args[0], args);
-
-		perror("execvp");
-		exit(EXIT_FAILURE);
+		else
+		{
+			full_path = find_path(args[0]);
+			args[0] = full_path;
+			execve(args[0], args, _env);
+		}
 	}
 	else
 	{

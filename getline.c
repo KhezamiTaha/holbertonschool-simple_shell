@@ -14,12 +14,11 @@ char *my_getline(void) {
 
     if (nread == -1) {
         perror("getline");
+		free(line);
         exit(EXIT_FAILURE);
     }
-
     if (nread > 0 && line[nread - 1] == '\n') {
         line[nread - 1] = '\0';
     }
-
     return (line);
 }
