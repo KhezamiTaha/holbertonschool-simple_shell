@@ -1,5 +1,10 @@
 #include "sh.h"
-
+/**
+ * find_path - find the correct path of the command
+ *
+ *
+ * Return: the full path of the command or NULL in failure
+ */
 char *find_path(char *command)
 {
 	char *path_copy, *token, *path_env;
@@ -9,13 +14,13 @@ char *find_path(char *command)
 	if (path_env == NULL)
 	{
 		perror("PATH");
-		exit(EXIT_FAILURE);
+		return (NULL);
 	}
 	path_copy = strdup(path_env);
 	if (path_copy == NULL)
 	{
 		perror("ERROR");
-		exit(EXIT_FAILURE);
+		return (NULL);
 	}
 	token = strtok(path_copy, ":");
 	while (token)
@@ -27,14 +32,11 @@ char *find_path(char *command)
 		if (stat(full_path, &st) == 0)
 		{
 			command = full_path;
-
 			return (command);
 		}
 
 		token = strtok(NULL, ":");
-		if (token == NULL)
-			printf("%s not found in PATH\n", command);
-	}
+		}
 
 	return (NULL);
 }

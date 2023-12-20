@@ -2,15 +2,14 @@
 /**
  * execute - Executes a command using fork and execve.
  * @command: The command string to be executed.
- * @env: The environment variable array.
  *
  * Return: No return value.
  *         Prints error messages if fork or execve fails.
  */
-void execute(char *command)
+int execute(char *command)
 {
 	pid_t child_pid;
-	int status;
+	int status, n;
 	char *token, *full_path;
 	char *args[32];
 	char *_env[] = {NULL};
@@ -21,7 +20,7 @@ void execute(char *command)
 	if (child_pid == -1)
 	{
 		perror("fork");
-		exit(EXIT_FAILURE);
+		return (1);
 	}
 	if (child_pid == 0)
 	{
@@ -41,11 +40,18 @@ void execute(char *command)
 		{
 			full_path = find_path(args[0]);
 			args[0] = full_path;
-			execve(args[0], args, _env);
+			n = execve(args[0], args, _env);
+			if (n == -1)
+				return (0);
+
+			perror("in the child");
 		}
 	}
 	else
 	{
 		wait(&status);
+		printf("Oh, it's all better now\n");
+		perror("in the par afterrrrr");
 	}
+	return (0);
 }
