@@ -11,6 +11,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 char *_getline(void);
-int execute(char *lineptr, char *env[]);
+char **split_command(char *lineptr);
+int execute(char **complet_command, char *env[]);
 
 #endif

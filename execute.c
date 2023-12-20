@@ -1,16 +1,26 @@
 #include "shell.h"
 /**
- * main - execve               example
- *
+ * execute - execve  the command in the current process
+ *@lineptr: the line read
+ *@env: the environement
  * Return: Always 0.
  */
-int execute(char *lineptr, char *env[])
+int execute(char **complet_command, char *env[])
 {
-	char *argv[2];
+	int pid, status, n;
 
-	argv[0] = lineptr;
-	argv[1] = NULL;
-	execve(lineptr, argv, env);
+
+	pid = fork();
+	if (pid == 0)
+	{
+		n = execve(complet_command[0], complet_command, env);
+		if (n == -1)
+			return (-1);
+	}
+	else
+	{
+		wait(&status);
+	}
 
 	return (0);
 }
