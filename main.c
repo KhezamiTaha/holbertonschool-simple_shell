@@ -20,7 +20,6 @@ int main(void)
 			write(STDOUT_FILENO, "\n",1);
 			return (0);
 		}
-		printf("%s",lineptr);
 		if (strcmp(lineptr, "env") == 0)
 		{
 			print_env();
