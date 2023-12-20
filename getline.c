@@ -14,10 +14,8 @@ char *my_getline(void)
     nread = getline(&line, &len, stdin);
     if (nread == -1)
     {
-        if (isatty(STDIN_FILENO))
-            perror("getline");
         free(line);
-        exit(EXIT_FAILURE);
+        return(NULL);
     }
     if (nread > 0 && line[nread - 1] == '\n')
     {

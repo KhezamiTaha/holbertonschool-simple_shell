@@ -7,7 +7,7 @@
  * Return: No return value.
  *         Prints error messages if fork or execve fails.
  */
-void execute(char *command, __attribute__ ((unused))char *env[])
+void execute(char *command )
 {
 	pid_t child_pid;
 	int status;

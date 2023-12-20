@@ -13,9 +13,14 @@ int main(void)
 		if (isatty(STDIN_FILENO))
 		{
 			printf("$ ");
-			fflush(stdout);
 		}
 		lineptr = my_getline();
+		if (lineptr == NULL)
+		{
+			write(STDOUT_FILENO, "\n",1);
+			return (0);
+		}
+		printf("%s",lineptr);
 		if (strcmp(lineptr, "env") == 0)
 		{
 			print_env();
@@ -26,11 +31,11 @@ int main(void)
 		}
 		else
 		{
-			execute(lineptr, environ);
+			execute(lineptr);
 		}
 
 		free(lineptr);
 	}
 
-	return (1);
+	return (0);
 }
