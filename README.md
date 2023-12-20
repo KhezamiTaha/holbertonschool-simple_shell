@@ -1,6 +1,6 @@
 # Simple Shell Implementation in C
 
-This is a basic implementation of a simple shell in C, adhering to the specifications outlined in the project requirements.
+This is a basic implementation of a simple shell in C, adhering to the specifications outlined in the Holberton project requirements.
 
 ## Table of Contents
 
@@ -26,7 +26,7 @@ This project implements a simple shell in C that supports basic command executio
 ## Files
 
 - **hsh.h:** Header file containing function prototypes and necessary includes.
-- **hsh.c:** The main file containing the entry point and the main loop of the shell.
+- **main.c:** The main file containing the entry point and the main loop of the shell.
 - **get_line.c:** Implementation of the function to read a line of input.
 - **execute.c:** Implementation of the function to execute commands.
 - **get_path.c:** Implementation of the function to find the full path of a command.
