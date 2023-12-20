@@ -35,8 +35,8 @@ int main(void)
 				free(lineptr);
 				return (0);
 			}
-
-
+			else if (n == -2)
+				perror("command not found");
 		}
 
 		free(lineptr);

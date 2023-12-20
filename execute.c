@@ -16,38 +16,45 @@ int execute(char *command)
 	int i = 0;
 	struct stat st;
 
-	child_pid = fork();
-	if (child_pid == -1)
+	token = strtok(command, " ");
+	while (token)
 	{
-		perror("fork");
-		return (1);
+		args[i++] = token;
+		token = strtok(NULL, " ");
 	}
-	if (child_pid == 0)
-	{
-		token = strtok(command, " ");
-		while (token)
-		{
-			args[i++] = token;
-			token = strtok(NULL, " ");
-		}
-		args[i] = NULL;
+	args[i] = NULL;
 
-		if (stat(args[0], &st) == 0)
+	if (stat(args[0], &st) != 0)
+		return (-2);
+	else
+	{
+		child_pid = fork();
+		if (child_pid == -1)
 		{
-			execve(args[0], args, _env);
+			perror("fork");
+			return (1);
+		}
+		if (child_pid == 0)
+		{
+
+			if (stat(args[0], &st) == 0)
+			{
+				execve(args[0], args, _env);
+			}
+			else
+			{
+				full_path = find_path(args[0]);
+				args[0] = full_path;
+				n = execve(args[0], args, _env);
+				if (n == -1)
+					return (-1);
+			}
 		}
 		else
 		{
-			full_path = find_path(args[0]);
-			args[0] = full_path;
-			n = execve(args[0], args, _env);
-			if (n == -1)
-				return (-1);
+			wait(&status);
 		}
 	}
-	else
-	{
-		wait(&status);
-	}
+
 	return (0);
 }

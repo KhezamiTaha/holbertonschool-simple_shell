@@ -1,5 +1,5 @@
 
-Function_file =    getline.c execute.c get_path.c exit.c print_env.c
+Function_file =    getline.c execute.c get_path.c exit.c print_env.c 
 Main_file =  main.c
 NAME =  hsh
 Function_name =  void hash_table_delete(hash_table_t *ht);
