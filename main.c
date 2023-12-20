@@ -17,6 +17,7 @@ int main(void)
 		lineptr = my_getline();
 		if (lineptr == NULL)
 		{
+			if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "\n",1);
 			return (0);
 		}
