@@ -24,10 +24,10 @@ int execute(char *command)
 	}
 	args[i] = NULL;
 
-	if (s(args[0], &st) != 0)
+	/*if (s(args[0], &st) != 0)
 		return (-2);
 	else
-	{
+	{          test if comman d do not exist*/
 		child_pid = fork();
 		if (child_pid == -1)
 		{
@@ -54,7 +54,7 @@ int execute(char *command)
 		{
 			wait(&status);
 		}
-	}
+	
 
 	return (0);
 }
