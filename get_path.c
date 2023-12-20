@@ -26,7 +26,6 @@ char *find_path(char *command)
 
         if (stat(full_path, &st) == 0)
         {
-
             command = full_path;
 
             return (command);
