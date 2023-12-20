@@ -18,7 +18,6 @@ char *_getline(void)
 	read = getline(&lineptr, &n, stdin);
 	if (read == -1)
 	{
-		perror("getline");
 		
 		free(lineptr);
 		return (NULL);
