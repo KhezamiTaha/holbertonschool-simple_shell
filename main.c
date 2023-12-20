@@ -8,6 +8,7 @@
 int main(void)
 {
 	char *lineptr;
+
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
@@ -18,7 +19,7 @@ int main(void)
 		if (lineptr == NULL)
 		{
 			if (isatty(STDIN_FILENO))
-			write(STDOUT_FILENO, "\n",1);
+				write(STDOUT_FILENO, "\n",  1);
 			return (0);
 		}
 		if (strcmp(lineptr, "env") == 0)

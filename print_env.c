@@ -1,7 +1,7 @@
 #include "sh.h"
 /**
  * print_env - Prints the current environment variables.
- * @env: The environment variable array.
+ * : The environment variable array.
  *
  * Return: No return value.
  */
