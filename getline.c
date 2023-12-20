@@ -5,19 +5,22 @@
  * Return: A dynamically allocated string containing the entered line.
  *         Exits the program with an error message if getline fails.
  */
-char *my_getline(void) {
+char *my_getline(void)
+{
     char *line = NULL;
     size_t len = 0;
-    ssize_t nread; 
-    
-    nread = getline(&line, &len, stdin);
+    ssize_t nread;
 
-    if (nread == -1) {
-        perror("getline");
-		free(line);
+    nread = getline(&line, &len, stdin);
+    if (nread == -1)
+    {
+        if (isatty(STDIN_FILENO))
+            perror("getline=====");
+        free(line);
         exit(EXIT_FAILURE);
     }
-    if (nread > 0 && line[nread - 1] == '\n') {
+    if (nread > 0 && line[nread - 1] == '\n')
+    {
         line[nread - 1] = '\0';
     }
     return (line);
