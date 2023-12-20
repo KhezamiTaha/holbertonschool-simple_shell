@@ -2,7 +2,6 @@
 
 char *find_path(char *command)
 {
-    int i;
     char *path_copy, *token, *path_env;
     struct stat st;
 

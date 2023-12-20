@@ -13,9 +13,7 @@ void execute(char *command, char *env[])
 	int status;
 	char *token, *full_path;
 	char *args[32];
-	char *_env[] = {NULL};
 	int i = 0;
-	int j;
 	struct stat st;
 
 	child_pid = fork();
@@ -36,13 +34,13 @@ void execute(char *command, char *env[])
 
 		if (stat(args[0], &st) == 0)
 		{
-			execve(args[0], args, _env);
+			execve(args[0], args, env);
 		}
 		else
 		{
 			full_path = find_path(args[0]);
 			args[0] = full_path;
-			execve(args[0], args, _env);
+			execve(args[0], args, env);
 		}
 	}
 	else
