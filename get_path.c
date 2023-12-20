@@ -31,12 +31,13 @@ char *find_path(char *command)
 
 		if (stat(full_path, &st) == 0)
 		{
-			command = full_path;
+			strcpy(command, full_path);
+			free(path_copy);
 			return (command);
 		}
-
 		token = strtok(NULL, ":");
-		}
+	}
+	free(path_copy);
 
 	return (NULL);
 }
