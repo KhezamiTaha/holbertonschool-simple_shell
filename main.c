@@ -32,5 +32,5 @@ int main(void)
 		free(lineptr);
 	}
 
-	return (0);
+	return (1);
 }
