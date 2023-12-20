@@ -24,7 +24,7 @@ int execute(char *command)
 	}
 	args[i] = NULL;
 
-	if (stat(args[0], &st) != 0)
+	if (s(args[0], &st) != 0)
 		return (-2);
 	else
 	{
@@ -45,7 +45,7 @@ int execute(char *command)
 			{
 				full_path = find_path(args[0]);
 				args[0] = full_path;
-				n = execve(args[0], args, _env);
+				n = execve(full_path, args, _env);
 				if (n == -1)
 					return (-1);
 			}
