@@ -7,12 +7,13 @@
  * Return: No return value.
  *         Prints error messages if fork or execve fails.
  */
-void execute(char *command, char *env[])
+void execute(char *command, __attribute__ ((unused))char *env[])
 {
 	pid_t child_pid;
 	int status;
 	char *token, *full_path;
 	char *args[32];
+	char *_env[] = {NULL};
 	int i = 0;
 	struct stat st;
 
@@ -34,13 +35,13 @@ void execute(char *command, char *env[])
 
 		if (stat(args[0], &st) == 0)
 		{
-			execve(args[0], args, env);
+			execve(args[0], args, _env);
 		}
 		else
 		{
 			full_path = find_path(args[0]);
 			args[0] = full_path;
-			execve(args[0], args, env);
+			execve(args[0], args, _env);
 		}
 	}
 	else
