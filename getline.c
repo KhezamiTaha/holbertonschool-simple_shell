@@ -14,7 +14,6 @@ char *my_getline(void)
 	nread = getline(&line, &len, stdin);
 	if (nread == -1)
 	{
-		perror("read-1");
 		free(line);
 		return (NULL);
 	}

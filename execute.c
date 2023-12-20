@@ -42,16 +42,12 @@ int execute(char *command)
 			args[0] = full_path;
 			n = execve(args[0], args, _env);
 			if (n == -1)
-				return (0);
-
-			perror("in the child");
+				return (-1);
 		}
 	}
 	else
 	{
 		wait(&status);
-		printf("Oh, it's all better now\n");
-		perror("in the par afterrrrr");
 	}
 	return (0);
 }

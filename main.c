@@ -19,34 +19,28 @@ int main(void)
 		lineptr = my_getline();
 		if (lineptr == NULL)
 		{
-			printf("11111111\n");
-			return (0);
-			printf("2222222\n");
 			if (isatty(STDIN_FILENO))
 				printf("\n");
 			return (0);
 		}
 		if (strcmp(lineptr, "env") == 0)
-		{
 			print_env();
-		}
 		else if (strcmp(lineptr, "exit") == 0)
-		{
 			exit_shell();
-		}
 		else
 		{
 			n = execute(lineptr);
-			if (n == 1)
+			if (n == -1)
 			{
-				exit(1);
-				exit(1);
+				free(lineptr);
+				return (0);
 			}
+
 
 		}
 
 		free(lineptr);
 	}
 
-	return (1);
+	return (0);
 }
