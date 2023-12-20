@@ -7,7 +7,7 @@
  *
  * Return: Always 0.
  */
-int main(void)
+int shell(void)
 {
 	int pid, status;
 	char *lineptr = NULL;
