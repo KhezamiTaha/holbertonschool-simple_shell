@@ -34,6 +34,11 @@ int execute(char *command)
 
 	args[i] = NULL;
 
+	if (stat(args[0], &st) == 0)
+		{
+			printf("before fork\n");
+		}
+
 	child_pid = fork();
 	if (child_pid == -1)
 	{
