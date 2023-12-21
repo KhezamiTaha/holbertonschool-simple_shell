@@ -12,7 +12,6 @@ int main(void)
 
 	while (1)
 	{
-		hgf()
 		if (isatty(STDIN_FILENO))
 		{
 			printf("$ ");
