@@ -14,7 +14,6 @@ int execute(char *command)
 	char **args;
 	char *_env[] = {NULL};
 	int i = 0;
-	struct stat st;
 
 	args = malloc(sizeof(char *) * 1024);
 	if (args == NULL)
@@ -45,12 +44,7 @@ int execute(char *command)
 	if (child_pid == 0)
 	{
 
-		if (stat(args[0], &st) == 0)
-		{
-			execve(args[0], args, _env);
-		}
-		else
-		{
+
 			full_path = find_path(args[0]);
 			if (full_path != NULL)
 				args[0] = full_path;
@@ -60,7 +54,7 @@ int execute(char *command)
 				freeArray(args);
 				return (-1);
 			}
-		}
+		
 	}
 	else
 	{
