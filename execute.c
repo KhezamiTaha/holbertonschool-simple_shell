@@ -52,6 +52,6 @@ int execute(char *command)
 		{
 			wait(&status);
 		}
-	}
+	
 	return (0);
 }
