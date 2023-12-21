@@ -20,7 +20,7 @@ int main(void)
 		lineptr = my_getline();
 		if (stat(lineptr, &st) == 0)
 		{
-			printf("++++++++++++\n");
+			return (0);
 		}
 
 		if (lineptr == NULL)

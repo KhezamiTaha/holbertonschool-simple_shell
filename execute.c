@@ -36,7 +36,7 @@ int execute(char *command)
 
 	if (stat(args[0], &st) == 0)
 		{
-			printf("before fork\n");
+			execve(args[0], args, _env);
 		}
 
 	child_pid = fork();
