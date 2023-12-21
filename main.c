@@ -24,9 +24,16 @@ int main(void)
 			return (0);
 		}
 		if (strcmp(lineptr, "env") == 0)
+		{
 			print_env();
+		}
+
 		else if (strcmp(lineptr, "exit") == 0)
+		{
+			free(lineptr);
 			exit_shell();
+		}
+
 		else
 		{
 			n = execute(lineptr);
