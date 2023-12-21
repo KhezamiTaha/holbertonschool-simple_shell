@@ -26,10 +26,6 @@ int execute(char *command)
 	i = 0;
 
 
-	if (stat(args[0], &st) != 0)
-		return (-2);
-	else
-	{
 		child_pid = fork();
 		if (child_pid == -1)
 		{
