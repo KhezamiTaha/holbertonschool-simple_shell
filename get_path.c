@@ -10,6 +10,7 @@ char *find_path(char *command)
 	char *path_copy, *token, *path_env;
 	struct stat st;
 
+	printf("%s===========", command);
 	path_env = getenv("PATH");
 	if (path_env == NULL)
 	{

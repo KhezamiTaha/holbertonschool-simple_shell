@@ -11,47 +11,63 @@ int execute(char *command)
 	pid_t child_pid;
 	int status, n;
 	char *token, *full_path;
-	char *args[32];
+	char **args;
 	char *_env[] = {NULL};
 	int i = 0;
 	struct stat st;
 
-	token = strtok(command, " ");
-	while (token)
+	args = malloc(sizeof(char *) * 1024);
+	if (args == NULL)
 	{
-		args[i++] = token;
+		perror("malloc array");
+		return (1);
+	}
+
+	token = strtok(command, " ");
+	while (token != NULL)
+	{
+		args[i] = malloc(sizeof(char) * (strlen(token) + 1));
+		strcpy(args[i], token);
 		token = strtok(NULL, " ");
+		i++;
 	}
 	args[i] = NULL;
-	i = 0;
 
 
-		child_pid = fork();
-		if (child_pid == -1)
+
+	child_pid = fork();
+	if (child_pid == -1)
+	{
+		perror("fork");
+		freeArray(args);
+		return (1);
+	}
+	if (child_pid == 0)
+	{
+
+		if (stat(args[0], &st) == 0)
 		{
-			perror("fork");
-			return (1);
-		}
-		if (child_pid == 0)
-		{
-
-			if (stat(args[0], &st) == 0)
-			{
-				execve(args[0], args, _env);
-			}
-			else
-			{
-				full_path = find_path(args[0]);
-				args[0] = full_path;
-				n = execve(full_path, args, _env);
-				if (n == -1)
-					return (-1);
-			}
+			execve(args[0], args, _env);
 		}
 		else
 		{
-			wait(&status);
+			full_path = find_path(args[0]);
+			if(full_path != NULL)
+				args[0] = full_path;
+			n = execve(args[0], args, _env);
+			if (n == -1)
+			{
+				freeArray(args);
+				return (-1);
+			}
+				
 		}
-	
+	}
+	else
+	{
+		wait(&status);
+	}
+	freeArray(args);
+
 	return (0);
 }
