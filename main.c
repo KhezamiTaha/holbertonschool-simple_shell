@@ -61,7 +61,7 @@ int main(void)
 		else if (strcmp(lineptr, "exit") == 0)
 		{
 			free(lineptr);
-			return (1);
+			exit(2);
 		}
 
 		else
