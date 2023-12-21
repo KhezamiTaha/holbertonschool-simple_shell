@@ -8,7 +8,7 @@
 int main(void)
 {
 	char *lineptr;
-	int n;
+	int n, i, j, length;
 
 	while (1)
 	{
@@ -16,15 +16,39 @@ int main(void)
 			printf("$ ");
 
 		lineptr = my_getline();
-
 		if (lineptr == NULL)
 		{
 			if (isatty(STDIN_FILENO))
 				printf("\n");
 			return (0);
 		}
+
 		if (*lineptr == ' ')
 		{
+			length = strlen(lineptr);
+
+			for (i = 0; i < length && lineptr[i] == ' '; i++)
+			{
+			}
+
+			if (lineptr[i] == '\0')
+			{
+				free (lineptr);
+				continue;
+			}
+				
+
+			for (j = 0; i < length; i++, j++)
+			{
+				lineptr[j] = lineptr[i];
+			}
+
+			lineptr[j] = '\0';
+		}
+
+		if (lineptr == NULL)
+		{
+			printf("===========");
 			free(lineptr);
 			continue;
 		}
@@ -53,6 +77,5 @@ int main(void)
 
 		free(lineptr);
 	}
-
 	return (0);
 }
