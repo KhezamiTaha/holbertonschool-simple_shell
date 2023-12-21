@@ -32,14 +32,6 @@ int execute(char *command)
 		i++;
 	}
 
-
-
-
-
-
-
-
-
 	args[i] = NULL;
 
 	child_pid = fork();
@@ -51,14 +43,6 @@ int execute(char *command)
 	}
 	if (child_pid == 0)
 	{
-
-
-
-
-
-
-
-
 
 		if (stat(args[0], &st) == 0)
 		{

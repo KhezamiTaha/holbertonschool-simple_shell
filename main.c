@@ -9,6 +9,7 @@ int main(void)
 {
 	char *lineptr;
 	int n;
+	struct stat st;
 
 	while (1)
 	{
@@ -17,12 +18,18 @@ int main(void)
 			printf("$ ");
 		}
 		lineptr = my_getline();
+		if (stat(lineptr, &st) == 0)
+		{
+			printf("++++++++++++\n");
+		}
+
 		if (lineptr == NULL)
 		{
 			if (isatty(STDIN_FILENO))
 				printf("\n");
 			return (0);
 		}
+
 		if (strcmp(lineptr, "env") == 0)
 		{
 			print_env();
