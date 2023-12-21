@@ -7,8 +7,9 @@
  */
 int main(void)
 {
-	char *lineptr;
-	int n;
+	char *lineptr, *copy = NULL;
+	int n, i;
+	bool space = false;
 
 	while (1)
 	{
@@ -17,6 +18,29 @@ int main(void)
 			printf("$ ");
 		}
 		lineptr = my_getline();
+
+		copy = strdup(lineptr);
+		if (copy == NULL)
+		{
+			perror("ERROR");
+			return (1);
+		}
+
+		while (copy && copy[i])
+		{
+			if (!isspace((unsigned char)copy[i]))
+			{
+				space = true;
+			}
+			i++;
+		}
+		free(copy);
+
+		if (space == false && *copy == ' ')
+		{
+			free(lineptr);
+			continue;
+		}
 
 		if (lineptr == NULL)
 		{
@@ -39,7 +63,7 @@ int main(void)
 		else
 		{
 			n = execute(lineptr);
-			if (n == -1)
+			if (n == 1)
 			{
 				free(lineptr);
 				return (0);
