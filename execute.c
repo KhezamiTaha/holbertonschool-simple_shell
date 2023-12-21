@@ -25,11 +25,6 @@ int execute(char *command)
 	args[i] = NULL;
 	i = 0;
 
-		while (args[i] != NULL)
-		{
-			printf("%s", args[i++]);
-			fflush(stdout);
-		}
 
 	if (stat(args[0], &st) != 0)
 		return (-2);
