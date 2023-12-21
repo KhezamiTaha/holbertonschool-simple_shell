@@ -61,7 +61,7 @@ int main(void)
 		else if (strcmp(lineptr, "exit") == 0)
 		{
 			free(lineptr);
-			exit_shell();
+			return (0);
 		}
 
 		else
