@@ -9,7 +9,6 @@ int main(void)
 {
 	char *lineptr;
 	int n;
-	struct stat st;
 
 	while (1)
 	{
@@ -18,10 +17,6 @@ int main(void)
 			printf("$ ");
 		}
 		lineptr = my_getline();
-		if (stat(lineptr, &st) == 0)
-		{
-			return (0);
-		}
 
 		if (lineptr == NULL)
 		{

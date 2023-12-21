@@ -34,10 +34,6 @@ int execute(char *command)
 
 	args[i] = NULL;
 
-	if (stat(args[0], &st) == 0)
-		{
-			execve(args[0], args, _env);
-		}
 
 	child_pid = fork();
 	if (child_pid == -1)
