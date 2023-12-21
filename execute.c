@@ -31,9 +31,16 @@ int execute(char *command)
 		token = strtok(NULL, " ");
 		i++;
 	}
+
+
+
+
+
+
+
+
+
 	args[i] = NULL;
-
-
 
 	child_pid = fork();
 	if (child_pid == -1)
@@ -45,6 +52,14 @@ int execute(char *command)
 	if (child_pid == 0)
 	{
 
+
+
+
+
+
+
+
+
 		if (stat(args[0], &st) == 0)
 		{
 			execve(args[0], args, _env);
@@ -52,7 +67,7 @@ int execute(char *command)
 		else
 		{
 			full_path = find_path(args[0]);
-			if(full_path != NULL)
+			if (full_path != NULL)
 				args[0] = full_path;
 			n = execve(args[0], args, _env);
 			if (n == -1)
@@ -60,7 +75,6 @@ int execute(char *command)
 				freeArray(args);
 				return (-1);
 			}
-				
 		}
 	}
 	else
