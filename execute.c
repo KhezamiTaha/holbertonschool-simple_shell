@@ -52,7 +52,7 @@ int execute(char *command)
 			if (n == -1)
 			{
 				freeArray(args);
-				return (-1);
+				return (1);
 			}
 		
 	}
