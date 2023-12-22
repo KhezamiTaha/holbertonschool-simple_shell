@@ -22,8 +22,6 @@ int main(int argc, char *argv[])
 		{
 			if (isatty(STDIN_FILENO))
 				printf("\n");
-			if (flag != 0)
-				return (127);
 			return (0);
 		}
 		if (*lineptr == ' ')
