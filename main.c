@@ -8,7 +8,7 @@
 int main(int argc, char *argv[])
 {
 
-	int n, counter = 0;
+	int n, counter = 0, flag = 0;
 	char *lineptr, *first_argument, *line_no_space;
 	(void)argc;
 
@@ -22,6 +22,8 @@ int main(int argc, char *argv[])
 		{
 			if (isatty(STDIN_FILENO))
 				printf("\n");
+			if (flag != 0)
+				return (127);
 			return (0);
 		}
 		if (*lineptr == ' ')
@@ -47,6 +49,12 @@ int main(int argc, char *argv[])
 		{
 			free(first_argument);
 			free(line_no_space);
+			if (flag != 0)
+			{
+				return (127);
+			
+			}
+				return (127);
 			exit(2);
 		}
 
@@ -54,7 +62,7 @@ int main(int argc, char *argv[])
 		{
 			n = execute(line_no_space);
 			if (n == -1)
-			{
+			{	flag = 1;
 				fprintf(stderr, "%s: %d: %s: not found\n", argv[0], counter, first_argument);
 				free(first_argument);
 				free(lineptr);
