@@ -1,7 +1,7 @@
 #include "sh.h"
 /**
  * find_path - find the correct path of the command
- *
+ *@command: command to recive.
  *
  * Return: the full path of the command or NULL in failure
  */

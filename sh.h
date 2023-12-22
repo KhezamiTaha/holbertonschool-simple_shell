@@ -19,7 +19,7 @@ int execute(char *command);
 void print_env(void);
 int exit_shell(void);
 char *find_path(char *command);
-int freeArray(char** array);
+int freeArray(char **array);
 char *handle_spaces(char *lineptr);
 char *get_first_argument(char *lineptr);
 #endif

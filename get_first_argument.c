@@ -2,11 +2,13 @@
 /**
  * get_first_argument - get the first argument of a string before space.
  *
+ * @lineptr: String.
  * Return: first argument or null if error.
  */
 char *get_first_argument(char *lineptr)
 {
 	char *copy, *token, *string;
+
 	copy = strdup(lineptr);
 	if (copy == NULL)
 	{

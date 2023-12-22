@@ -2,7 +2,7 @@
 /**
  * handle_spaces - Removes leading spaces from a string.
  * @lineptr: The input string to process.
- * @return If the modified string is not empty,
+ * Return: If the modified string is not empty,
  * returns a pointer to the modified string;
  * otherwise, returns NULL.
  */
