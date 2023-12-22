@@ -7,10 +7,10 @@
  */
 int main(int argc, char *argv[])
 {
-	
+
 	int n, counter = 0;
 	char *lineptr, *first_argument;
-	(void) argc;
+	(void)argc;
 
 	while (1)
 	{
