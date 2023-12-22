@@ -47,12 +47,6 @@ int main(int argc, char *argv[])
 		{
 			free(first_argument);
 			free(line_no_space);
-			if (flag != 0)
-			{
-				return (127);
-			
-			}
-				return (127);
 			exit(0);
 		}
 
