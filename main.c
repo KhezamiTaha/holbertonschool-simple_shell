@@ -8,10 +8,9 @@
 int main(int argc, char *argv[])
 {
 	
-	int n, i, j, length, counter = 0;
-	char *lineptr;
+	int n, counter = 0;
+	char *lineptr, *first_argument;
 	(void) argc;
-	(void) argv;
 
 	while (1)
 	{
@@ -34,10 +33,10 @@ int main(int argc, char *argv[])
 
 		if (lineptr == NULL)
 		{
-			printf("===========");
 			free(lineptr);
 			continue;
 		}
+		first_argument = get_first_argument(lineptr);
 
 		if (strcmp(lineptr, "env") == 0)
 		{
@@ -55,7 +54,7 @@ int main(int argc, char *argv[])
 			n = execute(lineptr);
 			if (n == -1)
 			{
-				printf("%s: %d: %s: not found", argv[0], counter, linep)
+				printf("%s: %d: %s: not found\n", argv[0], counter, first_argument);
 				free(lineptr);
 				return (0);
 			}
