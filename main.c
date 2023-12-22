@@ -8,8 +8,8 @@
 int main(int argc, char *argv[])
 {
 
-	int n, counter = 0;
-	char *lineptr, *first_argument;
+	int n, counter = 0, flag = 0;
+	char *lineptr, *first_argument, *line_no_space;
 	(void)argc;
 
 	while (1)
@@ -18,49 +18,59 @@ int main(int argc, char *argv[])
 			printf("$ ");
 		counter++;
 		lineptr = my_getline();
-
 		if (lineptr == NULL)
 		{
 			if (isatty(STDIN_FILENO))
 				printf("\n");
+			if (flag != 0)
+				return (127);
 			return (0);
 		}
-
 		if (*lineptr == ' ')
 		{
-			lineptr = handle_spaces(lineptr);
+			line_no_space = handle_spaces(lineptr);
+			if (line_no_space == NULL)
+			{
+				free(lineptr);
+				continue;
+			}
 		}
+		else
+			line_no_space = lineptr;
 
-		if (lineptr == NULL)
-		{
-			free(lineptr);
-			continue;
-		}
-		first_argument = get_first_argument(lineptr);
+		first_argument = get_first_argument(line_no_space);
 
-		if (strcmp(lineptr, "env") == 0)
+		if (strcmp(line_no_space, "env") == 0)
 		{
 			print_env();
 		}
 
-		else if (strcmp(lineptr, "exit") == 0)
+		else if (strcmp(line_no_space, "exit") == 0)
 		{
-			free(lineptr);
-			exit(2);
+			free(first_argument);
+			free(line_no_space);
+			if (flag != 0)
+			{
+				return (127);
+			
+			}
+				return (127);
+			exit(127);
 		}
 
 		else
 		{
-			n = execute(lineptr);
+			n = execute(line_no_space);
 			if (n == -1)
-			{
-				printf("%s: %d: %s: not found\n", argv[0], counter, first_argument);
+			{	flag = 1;
+				fprintf(stderr, "%s: %d: %s: not found\n", argv[0], counter, first_argument);
+				free(first_argument);
 				free(lineptr);
 				return (0);
 			}
 		}
-
-		free(lineptr);
+		free(first_argument);
+		free(line_no_space);
 	}
 	return (0);
 }

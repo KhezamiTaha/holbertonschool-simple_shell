@@ -1,9 +1,9 @@
 #include "sh.h"
-int freeArray(char** array)
+int freeArray(char **array)
 {
 	int i = 0;
 
-	while(array[i] != NULL)
+	while (array[i] != NULL)
 	{
 		free(array[i++]);
 	}
