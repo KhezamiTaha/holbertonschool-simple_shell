@@ -8,7 +8,7 @@
 int main(int argc, char *argv[])
 {
 
-	int n, counter = 0, flag = 0;
+	int n, counter = 0;
 	char *lineptr, *first_argument, *line_no_space;
 	(void)argc;
 
