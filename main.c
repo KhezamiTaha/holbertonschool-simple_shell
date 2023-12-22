@@ -5,17 +5,20 @@
  * Return: Always returns 0.
  *         Exits the program when the user enters "exit".
  */
-int main(void)
+int main(int argc, char *argv[])
 {
-	char *lineptr;
-	int n;
+	
+	int n, counter = 0;
+	char *lineptr, *first_argument;
+	(void) argc;
 
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
 			printf("$ ");
-
+		counter++;
 		lineptr = my_getline();
+
 		if (lineptr == NULL)
 		{
 			if (isatty(STDIN_FILENO))
@@ -27,12 +30,13 @@ int main(void)
 		{
 			lineptr = handle_spaces(lineptr);
 		}
-		
+
 		if (lineptr == NULL)
 		{
 			free(lineptr);
 			continue;
 		}
+		first_argument = get_first_argument(lineptr);
 
 		if (strcmp(lineptr, "env") == 0)
 		{
@@ -50,6 +54,7 @@ int main(void)
 			n = execute(lineptr);
 			if (n == -1)
 			{
+				printf("%s: %d: %s: not found\n", argv[0], counter, first_argument);
 				free(lineptr);
 				return (0);
 			}

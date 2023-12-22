@@ -40,7 +40,7 @@ int execute(char *command)
 	{
 		perror("fork");
 		freeArray(args);
-		return (1);
+		return (-1);
 	}
 	if (child_pid == 0)
 	{
