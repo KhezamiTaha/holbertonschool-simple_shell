@@ -5,17 +5,23 @@
  * Return: Always returns 0.
  *         Exits the program when the user enters "exit".
  */
-int main(void)
+int main(int argc, char *argv[])
 {
+	
 	char *lineptr;
-	int n, i, j, length;
+	int n, i, j, length, counter = 0;
+	(void) argc;
+	(void) argv;
+	
+
 
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
 			printf("$ ");
-
+		counter++;
 		lineptr = my_getline();
+
 		if (lineptr == NULL)
 		{
 			if (isatty(STDIN_FILENO))
@@ -34,7 +40,7 @@ int main(void)
 			if (lineptr[i] == '\0')
 			{
 				free (lineptr);
-				continue;
+				continue; 
 			}
 				
 
@@ -46,12 +52,9 @@ int main(void)
 			lineptr[j] = '\0';
 		}
 
-		if (lineptr == NULL)
-		{
-			printf("===========");
-			free(lineptr);
-			continue;
-		}
+
+
+		
 
 		if (strcmp(lineptr, "env") == 0)
 		{
@@ -69,6 +72,7 @@ int main(void)
 			n = execute(lineptr);
 			if (n == -1)
 			{
+				printf("%s: %d: %s: not found", argv[0], counter, linep)
 				free(lineptr);
 				return (0);
 			}
