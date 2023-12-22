@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
 			n = execute(line_no_space);
 			if (n == -1)
 			{
-				printf("%s: %d: %s: not found\n", argv[0], counter, first_argument);
+				fprintf(stderr, "%s: %d: %s: not found\n", argv[0], counter, first_argument);
 				free(first_argument);
 				free(lineptr);
 				return (0);
