@@ -20,5 +20,5 @@ void print_env(void);
 int exit_shell(void);
 char *find_path(char *command);
 int freeArray(char** array);
-
+char *handle_spaces(char *lineptr);
 #endif

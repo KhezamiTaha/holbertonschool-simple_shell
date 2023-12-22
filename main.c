@@ -8,7 +8,7 @@
 int main(void)
 {
 	char *lineptr;
-	int n, i, j, length;
+	int n;
 
 	while (1)
 	{
@@ -25,30 +25,11 @@ int main(void)
 
 		if (*lineptr == ' ')
 		{
-			length = strlen(lineptr);
-
-			for (i = 0; i < length && lineptr[i] == ' '; i++)
-			{
-			}
-
-			if (lineptr[i] == '\0')
-			{
-				free (lineptr);
-				continue;
-			}
-				
-
-			for (j = 0; i < length; i++, j++)
-			{
-				lineptr[j] = lineptr[i];
-			}
-
-			lineptr[j] = '\0';
+			lineptr = handle_spaces(lineptr);
 		}
-
+		
 		if (lineptr == NULL)
 		{
-			printf("===========");
 			free(lineptr);
 			continue;
 		}
@@ -72,7 +53,6 @@ int main(void)
 				free(lineptr);
 				return (0);
 			}
-			/*else if (n == -2)*/
 		}
 
 		free(lineptr);
