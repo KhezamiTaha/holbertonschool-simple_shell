@@ -6,7 +6,7 @@
  */
 char *get_first_argument(char *lineptr)
 {
-	char *copy, *token;
+	char *copy, *token, *string;
 	copy = strdup(lineptr);
 	if (copy == NULL)
 	{
@@ -14,5 +14,9 @@ char *get_first_argument(char *lineptr)
 		return (NULL);
 	}
 	token = strtok(copy, " ");
-	return (token);
+	string = malloc(sizeof(char) * (strlen(token) + 1));
+	strcpy(string, token);
+
+	free(copy);
+	return (string);
 }

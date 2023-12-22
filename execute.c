@@ -33,8 +33,6 @@ int execute(char *command)
 	}
 	args[i] = NULL;
 
-
-
 	child_pid = fork();
 	if (child_pid == -1)
 	{
