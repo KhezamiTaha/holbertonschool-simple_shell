@@ -12,6 +12,7 @@ int execute(char *command)
 	int status, n;
 	char *token, *full_path;
 	char **args;
+	
 	char *_env[] = {NULL};
 	int i = 0;
 	struct stat st;
