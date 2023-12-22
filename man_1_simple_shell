@@ -1,0 +1,70 @@
+.TH SIMPLE_SHELL 1 "December 22, 2023" "Version 1.0" "Simple Shell Manual"
+
+.SH NAME
+simple_shell \- UNIX command line interpreter
+
+.SH SYNOPSIS
+.B simple_shell
+
+.SH DESCRIPTION
+The \fBsimple_shell\fR is a command line interpreter designed for simplicity and adherence to basic UNIX shell practices.
+
+.PP
+The shell reads commands from the user, executes them, and displays a prompt for the next command. The user can input a single word command, and each command line must end with a newline. After executing a command, the shell displays the prompt again.
+
+.PP
+This shell does not support advanced features such as semicolons, pipes, redirections, or multiple-word commands with arguments. It follows a minimalist approach to provide a straightforward and basic command line interface.
+
+.PP
+If an executable cannot be found, the shell prints an error message and displays the prompt again. Error handling is a crucial aspect, ensuring a user-friendly and reliable experience.
+
+.PP
+The shell handles the "end of file" condition (Ctrl+D) gracefully, allowing users to signal the termination of input.
+
+.SH USAGE
+.B simple_shell
+
+.SH COMMAND LINE INTERACTION
+The shell interacts with the user by displaying a prompt and waiting for a command. Each command should be a single word, and the shell executes it immediately.
+
+.PP
+Example usage:
+.BR $ ./simple_shell
+.BR simple_shell$ command
+.BR simple_shell$ another_command
+
+.SH ERROR HANDLING
+If the entered command is not found, the shell prints an error message and prompts the user again.
+
+.PP
+Example error handling:
+.BR simple_shell$ non_existent_command
+.BR simple_shell: non_existent_command: command not found
+.BR simple_shell$
+
+.SH END OF FILE CONDITION
+The shell handles the "end of file" condition gracefully, allowing users to terminate input with Ctrl+D.
+
+.PP
+Example end of file:
+.BR simple_shell$ Ctrl+D
+.BR simple_shell: EOF (Ctrl+D)
+
+.SH EXIT STATUS
+The exit status of the last command executed is available in the \fB$?\fR variable.
+
+.SH FILES
+.BR /bin/simple_shell
+
+.SH SEE ALSO
+.BR sh (1), bash (1), zsh (1)
+
+.SH AUTHORS
+This manual page was written by Saafi Nacim / Khezami Taha .
+
+.SH BUGS
+Report bugs to Saafi Nacim <nacim.saafi@gmail.com> / Khezami Taha <khezamitaha@gmail.com> .
+
+.SH COPYRIGHT
+Copyright \(co [2023] [Nacim Saafi/ Khezami Taha]. This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
