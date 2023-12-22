@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
 			
 			}
 				return (127);
-			exit(2);
+			exit(127);
 		}
 
 		else
